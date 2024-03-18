@@ -1,5 +1,6 @@
 package com.example.hotelmanagement.service;
 
+import com.example.hotelmanagement.dto.PersonRoomBookingDetails;
 import com.example.hotelmanagement.entity.Person;
 import com.example.hotelmanagement.exception.PersonIdException;
 import com.example.hotelmanagement.repository.BookingRepository;
@@ -24,11 +25,11 @@ public class PersonService {
         return personRepository.save(person);
     }
 
-    public List<Object[]> getRoomsBooked(long personId) throws PersonIdException {
+    public List<PersonRoomBookingDetails[]> getRoomsBooked(long personId) throws PersonIdException {
         Optional<Person> optionalPerson = personRepository.findById(personId);
         if (optionalPerson.isPresent()) {
             Person person = optionalPerson.get();
-            List<Object[]> result = bookingRepository.findBookingRoomByPersonId(person.getId());
+            List<PersonRoomBookingDetails[]> result = bookingRepository.findBookingRoomByPersonId(person.getId());
             return result;
         }
         throw new PersonIdException("Provided person id not found");
