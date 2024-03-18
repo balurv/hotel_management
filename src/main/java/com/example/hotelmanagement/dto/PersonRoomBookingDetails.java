@@ -12,6 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class PersonRoomBookingDetails {
-    private List<Booking> booking;
-    private List<Room> room;
+    private Booking booking;
+    private Room room;
 }

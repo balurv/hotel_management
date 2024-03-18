@@ -29,7 +29,7 @@ public class PersonController {
     @GetMapping("/bookedRooms")
     public ResponseEntity<?> getPersonBookedRooms(long personId) {
         try {
-            List<PersonRoomBookingDetails> roomList = personService.getRoomsBooked(personId);
+            List<Object[]> roomList = personService.getRoomsBooked(personId);
             return new ResponseEntity<>(roomList, HttpStatus.OK);
         } catch (PersonIdException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
